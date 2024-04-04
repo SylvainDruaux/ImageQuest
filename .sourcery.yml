@@ -1,0 +1,14 @@
+configurations:
+    # -- ImageQuest configuration --
+    - sources:
+        - ImageQuest
+      templates:
+        - Templates
+      output:
+          path: ImageQuestTests/Sourcery
+          link:
+            project: ./ImageQuest.xcodeproj
+            target: ImageQuestTests
+            group: ImageQuestTests/Sourcery
+      args:
+        testableImport: "ImageQuest" # [MANDATORY] Your mocks will have "@testable import <testableImport>"
