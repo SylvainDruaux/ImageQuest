@@ -30,7 +30,7 @@ enum PhotosEndpoint {
         }
         
         /// How to sort the photos. Optional. (Valid values: latest, oldest, popular; default: latest)
-        if var orderBy {
+        if let orderBy {
             parameters[QueryItemName.orderBy] = orderBy.rawValue
         }
         
