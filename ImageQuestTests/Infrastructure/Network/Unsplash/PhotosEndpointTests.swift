@@ -12,18 +12,30 @@ class PhotosEndpointTests: XCTestCase {
     let baseURL = Constants.unsplashBaseURL
     let clientId = Constants.clientId
     let perPage = 30
-    let orderBy = "latest"
+    let orderBy: OrderBy = .latest
+    let photoID = "KMn4VEeEPR8"
     var parameters = [String: Any]()
     
-    func testLatest() {
-        let endpoint = PhotosEndpoint.latest(perPage: perPage)
+    func testList() {
+        let endpoint = PhotosEndpoint.list(page: nil, perPage: perPage, orderBy: orderBy)
         
         parameters[QueryItemName.clientId] = clientId
         parameters[QueryItemName.perPage] = perPage
-        parameters[QueryItemName.orderBy] = orderBy
+        parameters[QueryItemName.orderBy] = orderBy.rawValue
         
         XCTAssertEqual(endpoint.baseURL, baseURL)
         XCTAssertEqual(endpoint.path, "photos")
+        XCTAssertEqual(endpoint.method, HTTPMethod.get)
+        XCTAssertTrue(NSDictionary(dictionary: endpoint.queryParameters).isEqual(to: parameters))
+    }
+    
+    func testGet() {
+        let endpoint = PhotosEndpoint.get(photoID: photoID)
+        
+        parameters[QueryItemName.clientId] = clientId
+        
+        XCTAssertEqual(endpoint.baseURL, baseURL)
+        XCTAssertEqual(endpoint.path, "photos/\(photoID)")
         XCTAssertEqual(endpoint.method, HTTPMethod.get)
         XCTAssertTrue(NSDictionary(dictionary: endpoint.queryParameters).isEqual(to: parameters))
     }

@@ -10,6 +10,7 @@ import Foundation
 enum QueryItemName {
     static let clientId = "client_id"
     static let query = "query"
+    static let page = "page"
     static let perPage = "per_page"
     static let orderBy = "order_by"
 }
