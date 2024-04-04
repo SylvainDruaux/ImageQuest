@@ -12,7 +12,6 @@ class SearchEndpointTests: XCTestCase {
     let baseURL = Constants.unsplashBaseURL
     let clientId = Constants.clientId
     let query = "query"
-    let orderBy = "latest"
     var parameters = [String: Any]()
     
     func testSearchPhotos() {
@@ -20,7 +19,6 @@ class SearchEndpointTests: XCTestCase {
         
         parameters[QueryItemName.clientId] = clientId
         parameters[QueryItemName.query] = query
-        parameters[QueryItemName.orderBy] = orderBy
         
         XCTAssertEqual(endpoint.baseURL, baseURL)
         XCTAssertEqual(endpoint.path, "search/photos")

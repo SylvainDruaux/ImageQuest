@@ -15,6 +15,7 @@ enum PhotosEndpoint {
         var parameters = [String: Any]()
         parameters[QueryItemName.clientId] = clientId
         parameters[QueryItemName.perPage] = perPage
+        parameters[QueryItemName.orderBy] = "latest"
         
         return Endpoint(
             baseURL: baseURL,

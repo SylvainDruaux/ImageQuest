@@ -15,7 +15,6 @@ enum SearchEndpoint {
         var parameters = [String: Any]()
         parameters[QueryItemName.clientId] = clientId
         parameters[QueryItemName.query] = query
-        parameters[QueryItemName.orderBy] = "latest"
         
         return Endpoint(
             baseURL: baseURL,

@@ -12,6 +12,7 @@ class PhotosEndpointTests: XCTestCase {
     let baseURL = Constants.unsplashBaseURL
     let clientId = Constants.clientId
     let perPage = 30
+    let orderBy = "latest"
     var parameters = [String: Any]()
     
     func testLatest() {
@@ -19,6 +20,7 @@ class PhotosEndpointTests: XCTestCase {
         
         parameters[QueryItemName.clientId] = clientId
         parameters[QueryItemName.perPage] = perPage
+        parameters[QueryItemName.orderBy] = orderBy
         
         XCTAssertEqual(endpoint.baseURL, baseURL)
         XCTAssertEqual(endpoint.path, "photos")
