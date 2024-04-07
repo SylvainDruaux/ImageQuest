@@ -59,6 +59,8 @@
 		E4ABDD8D2BBD5624004B8EF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4ABDD8C2BBD5624004B8EF1 /* Preview Assets.xcassets */; };
 		E4ABDDA12BBD5625004B8EF1 /* ImageQuestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ABDDA02BBD5625004B8EF1 /* ImageQuestUITests.swift */; };
 		E4ABDDA32BBD5625004B8EF1 /* ImageQuestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ABDDA22BBD5625004B8EF1 /* ImageQuestUITestsLaunchTests.swift */; };
+		E4DD9F792BC2B9FF0095B2DB /* ScreenSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DD9F782BC2B9FF0095B2DB /* ScreenSize.swift */; };
+		E4DD9F7B2BC2DC750095B2DB /* ImageGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DD9F7A2BC2DC750095B2DB /* ImageGesture.swift */; };
 		E4F4E3182BBEA473009CD582 /* OrderBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4E3172BBEA473009CD582 /* OrderBy.swift */; };
 		E4F4E31E2BBEB5D1009CD582 /* PhotoRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4E31D2BBEB5D1009CD582 /* PhotoRepositoryProtocol.swift */; };
 		E4F4E3212BBEB70C009CD582 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4E3202BBEB70C009CD582 /* Photo.swift */; };
@@ -151,6 +153,8 @@
 		E4ABDD9C2BBD5625004B8EF1 /* ImageQuestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageQuestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4ABDDA02BBD5625004B8EF1 /* ImageQuestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageQuestUITests.swift; sourceTree = "<group>"; };
 		E4ABDDA22BBD5625004B8EF1 /* ImageQuestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageQuestUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E4DD9F782BC2B9FF0095B2DB /* ScreenSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenSize.swift; sourceTree = "<group>"; };
+		E4DD9F7A2BC2DC750095B2DB /* ImageGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageGesture.swift; sourceTree = "<group>"; };
 		E4F4E3172BBEA473009CD582 /* OrderBy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBy.swift; sourceTree = "<group>"; };
 		E4F4E31D2BBEB5D1009CD582 /* PhotoRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoRepositoryProtocol.swift; sourceTree = "<group>"; };
 		E4F4E3202BBEB70C009CD582 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
@@ -264,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				E411D0792BC28A4E005EDD15 /* PhotoOverlay.swift */,
+				E4DD9F7A2BC2DC750095B2DB /* ImageGesture.swift */,
 			);
 			path = Modifiers;
 			sourceTree = "<group>";
@@ -454,6 +459,14 @@
 			path = ImageQuestUITests;
 			sourceTree = "<group>";
 		};
+		E4DD9F772BC2B9E60095B2DB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E4DD9F782BC2B9FF0095B2DB /* ScreenSize.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		E4F4E3162BBEA3C4009CD582 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -594,6 +607,7 @@
 				E42A2D832BC143B1002EAED7 /* Components */,
 				E411D0772BC28A00005EDD15 /* Styles */,
 				E411D0632BC183F7005EDD15 /* Extensions */,
+				E4DD9F772BC2B9E60095B2DB /* Utils */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -807,6 +821,7 @@
 				E46D29FF2BBD61AD00D44C16 /* NetworkError.swift in Sources */,
 				E4ABDD882BBD5623004B8EF1 /* ContentView.swift in Sources */,
 				E46D2A012BBD61C100D44C16 /* NetworkError+HTTPStatusCode.swift in Sources */,
+				E4DD9F7B2BC2DC750095B2DB /* ImageGesture.swift in Sources */,
 				E4F4E34F2BBF2E48009CD582 /* Coordinator.swift in Sources */,
 				E411D0592BC156EA005EDD15 /* InfoButton.swift in Sources */,
 				E4F4E32B2BBEC980009CD582 /* DetailedPhotoUseCase.swift in Sources */,
@@ -817,6 +832,7 @@
 				E411D05F2BC16208005EDD15 /* PhotoDetailViewModel.swift in Sources */,
 				E42A2D862BC143E9002EAED7 /* BackButton.swift in Sources */,
 				E46D2A0E2BBD640A00D44C16 /* Constants.swift in Sources */,
+				E4DD9F792BC2B9FF0095B2DB /* ScreenSize.swift in Sources */,
 				E411D0742BC270AA005EDD15 /* ColumnLayout.swift in Sources */,
 				E4F4E3512BBF2E90009CD582 /* MainViewTab.swift in Sources */,
 				E4F4E31E2BBEB5D1009CD582 /* PhotoRepositoryProtocol.swift in Sources */,
@@ -1028,6 +1044,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1057,6 +1074,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

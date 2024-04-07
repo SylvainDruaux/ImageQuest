@@ -30,6 +30,7 @@ struct PhotoDetailView: View {
                         .foregroundColor(.clear)
                 }
             }
+            .imageGesture(originalWidth: photo.width, originalHeight: photo.height)
             
             VStack {
                 Spacer()
