@@ -6,10 +6,12 @@
 //
 
 import Foundation
+import _MapKit_SwiftUI
 
 @MainActor
 final class PhotoDetailViewModel: ObservableObject {
     @Published private(set) var detailedPhoto: Photo?
+    @Published private(set) var cameraPosition: MapCameraPosition?
     @Published private(set) var error: String?
     @Published var hasError = false
     @Published var isShowingPhotoInfoSheet = false
@@ -23,6 +25,14 @@ final class PhotoDetailViewModel: ObservableObject {
     func loadDetailedPhoto(_ photoID: Photo.ID) async {
         do {
             detailedPhoto = try await detailedPhotoUseCase.execute(id: photoID)
+            
+            if let position = detailedPhoto?.location?.position, let latitude = position.latitude, let longitude = position.longitude {
+                cameraPosition = .region(.init(
+                    center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude),
+                    latitudinalMeters: 1100, longitudinalMeters: 1100
+                    
+                ))
+            }
         } catch {
             self.error = (error as? NetworkError)?.errorDescription ?? error.localizedDescription
             hasError = true

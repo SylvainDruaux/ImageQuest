@@ -16,18 +16,18 @@ struct PhotoDetailView: View {
     
     var body: some View {
         ZStack {
-            CachedAsyncImage(url: photo.urls.regular, transaction: Transaction(animation: .easeInOut)) { phase in
+            CachedAsyncImage(url: photo.urls.full, transaction: Transaction(animation: .easeInOut)) { phase in
                 switch phase {
-                case .empty, .failure:
-                    Rectangle()
-                        .foregroundColor(.clear)
+                case .empty:
+                    ProgressView()
+                case .failure:
+                    Image(systemName: "wifi.slash")
                 case .success(let image):
                     image
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                 @unknown default:
-                    Rectangle()
-                        .foregroundColor(.clear)
+                    EmptyView()
                 }
             }
             .imageGesture(originalWidth: photo.width, originalHeight: photo.height)
@@ -58,7 +58,7 @@ struct PhotoDetailView: View {
         .task { await viewModel.loadDetailedPhoto(photo.id) }
         .sheet(isPresented: $viewModel.isShowingPhotoInfoSheet) {
             NavigationStack {
-                PhotoInfoSheet(photo: viewModel.detailedPhoto ?? photo)
+                PhotoInfoSheet(photo: viewModel.detailedPhoto ?? photo, cameraPosition: viewModel.cameraPosition)
                     .navigationBarItems(
                         leading: Button("Close") { viewModel.isShowingPhotoInfoSheet = false }
                     )
