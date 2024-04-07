@@ -37,7 +37,15 @@ struct Urls: Decodable {
 }
 
 struct Links: Decodable {
+    let html: String
     let download: String
+    
+    func toDomain() -> PhotoLinks {
+        .init(
+            html: URL(string: html),
+            download: URL(string: download)
+        )
+    }
 }
 
 struct User: Decodable {
@@ -50,38 +58,35 @@ struct User: Decodable {
 }
 
 struct Exif: Decodable {
-    let make, model, exposureTime: String
-    let aperture, focalLength: Double
-    let iso: Int
+    let make, model, exposureTime, aperture, focalLength: String?
+    let iso: Int?
     
     func toDomain() -> PhotoExif {
         .init(
-            make: make,
-            model: model,
-            shutterSpeed: exposureTime,
-            aperture: aperture,
-            focalLength: focalLength,
-            iso: iso
+            make: make ?? "-",
+            model: model ?? "-",
+            shutterSpeed: exposureTime ?? "-",
+            aperture: aperture ?? "-",
+            focalLength: (focalLength != nil && focalLength != "0.0") ? focalLength! : "-",
+            iso: iso.map { String($0) } ?? "-"
         )
     }
 }
 
 struct Location: Decodable {
-    let name, city, country: String
-    let position: Position
+    let name: String?
+    let position: Position?
     
     func toDomain() -> PhotoLocation {
         .init(
             name: name,
-            city: city,
-            country: country,
-            position: position.toDomain()
+            position: position?.toDomain()
         )
     }
 }
 
 struct Position: Decodable {
-    let latitude, longitude: Double
+    let latitude, longitude: Double?
     
     func toDomain() -> PhotoPosition {
         .init(latitude: latitude, longitude: longitude)
@@ -98,7 +103,7 @@ extension PhotoResponseDTO {
             description: description,
             altDescription: altDescription,
             urls: urls.toDomain(),
-            downloadLink: links.download,
+            links: links.toDomain(),
             photographer: user.toDomain(),
             exif: exif?.toDomain(),
             location: location?.toDomain()

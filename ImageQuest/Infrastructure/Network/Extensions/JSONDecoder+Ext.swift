@@ -8,9 +8,10 @@
 import Foundation
 
 extension JSONDecoder: JSONDecoderProtocol {
-    static var convertFromSnakeCase: JSONDecoder {
+    static var unsplashDecoder: JSONDecoder {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .iso8601
         return decoder
     }
 }

@@ -13,7 +13,7 @@ final actor APIClient: APIClientProtocol {
     
     init(
         urlSession: URLSession = URLSession(configuration: .default),
-        decoder: JSONDecoderProtocol = JSONDecoder.convertFromSnakeCase
+        decoder: JSONDecoderProtocol = JSONDecoder.unsplashDecoder
     ) {
         self.urlSession = urlSession
         self.decoder = decoder

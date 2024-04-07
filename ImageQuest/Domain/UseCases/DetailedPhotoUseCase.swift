@@ -9,10 +9,10 @@ import Foundation
 
 // sourcery: AutoMockable
 protocol DetailedPhotoUseCaseProtocol {
-    func execute(id: String) async throws -> Photo
+    func execute(id: Photo.ID) async throws -> Photo
 }
 
-final class DetailedPhotoUseCase {
+final class DetailedPhotoUseCase: DetailedPhotoUseCaseProtocol {
     private let photoRepository: PhotoRepositoryProtocol
     
     init(photoRepository: PhotoRepositoryProtocol = PhotoRepository()) {

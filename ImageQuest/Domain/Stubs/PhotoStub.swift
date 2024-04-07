@@ -1,12 +1,12 @@
 //
 //  PhotoStub.swift
-//  ImageQuestTests
+//  ImageQuest
 //
 //  Created by Sylvain Druaux on 04/04/2024.
 //
 
+#if DEBUG
 import Foundation
-@testable import ImageQuest
 
 extension Photo {
     static func stub(
@@ -17,7 +17,7 @@ extension Photo {
         description: String = "Just a beautiful landscape",
         altDescription: String? = nil,
         urls: PhotoURLs = .init(raw: nil, full: nil, regular: nil, small: nil, thumb: nil, smallS3: nil),
-        downloadLink: String = "https://example.com/download",
+        links: PhotoLinks = .init(html: URL(string: "https://example.com/"), download: URL(string: "https://example.com/download")),
         photographer: Photographer = .init(id: UUID().uuidString, name: "Alex Smith"),
         exif: PhotoExif? = nil,
         location: PhotoLocation? = nil
@@ -30,7 +30,7 @@ extension Photo {
             description: description,
             altDescription: altDescription,
             urls: urls,
-            downloadLink: downloadLink,
+            links: links,
             photographer: photographer,
             exif: exif,
             location: location
@@ -38,7 +38,29 @@ extension Photo {
     }
     
     static var firstPhoto: Self {
-        .stub(description: "First photo")
+        .stub(
+            id: "exFdOWkYBQw",
+            published: {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                return dateFormatter.date(from: "2019-12-30") ?? Date()
+            }(),
+            description: "beach and cliffs in Nusa Penida",
+            urls: PhotoURLs(
+                raw: nil,
+                full: URL(string: "https://images.unsplash.com/photo-1577717903315-1691ae25ab3f"),
+                regular: URL(string: "https://images.unsplash.com/photo-1577717903315-1691ae25ab3f"),
+                small: nil,
+                thumb: nil,
+                smallS3: nil
+            ),
+            photographer: Photographer(id: "", name: "Alfiano Sutianto"),
+            exif: PhotoExif(make: "SONY", model: "ILCE-6300", shutterSpeed: "1/4000", aperture: "3.5", focalLength: "16.0", iso: "250"),
+            location: PhotoLocation(
+                name: "Nusa Penida, Klungkung Regency, Bali, Indonesia",
+                position: PhotoPosition(latitude: -8.727807, longitude: 115.5444231)
+            )
+        )
     }
     
     static var secondPhoto: Self {
@@ -58,3 +80,4 @@ extension PhotosPage {
         )
     }
 }
+#endif

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Photo: Equatable, Identifiable, Hashable {
+struct Photo: Equatable, Identifiable, Hashable, ColumnLayoutItem {
     let id: String
     let published: Date
     let width: Int
@@ -15,10 +15,11 @@ struct Photo: Equatable, Identifiable, Hashable {
     let description: String?
     let altDescription: String?
     let urls: PhotoURLs
-    let downloadLink: String
+    let links: PhotoLinks
     let photographer: Photographer
     let exif: PhotoExif?
     let location: PhotoLocation?
+    var size: CGSize { return CGSize(width: width, height: height) }
 }
 
 struct PhotoURLs: Equatable, Hashable {
@@ -30,32 +31,35 @@ struct PhotoURLs: Equatable, Hashable {
     let smallS3: URL?
 }
 
+struct PhotoLinks: Equatable, Hashable {
+    let html: URL?
+    let download: URL?
+}
+
 struct PhotoExif: Equatable, Hashable {
     typealias FractionOfSecond = String
-    typealias Millimeter = Double
+    typealias Millimeter = String
     
     let make: String
     let model: String
     let shutterSpeed: FractionOfSecond
-    let aperture: Double
+    let aperture: String
     let focalLength: Millimeter
-    let iso: Int
+    let iso: String
 }
 
 struct PhotoLocation: Equatable, Hashable {
-    let name: String
-    let city: String
-    let country: String
-    let position: PhotoPosition
+    let name: String?
+    let position: PhotoPosition?
 }
 
 struct PhotoPosition: Equatable, Hashable {
-    let latitude: Double
-    let longitude: Double
+    let latitude: Double?
+    let longitude: Double?
 }
 
 struct PhotosPage: Equatable {
-    let totalPages: Int?
+    let totalPages: Int
     let photos: [Photo]
 }
 

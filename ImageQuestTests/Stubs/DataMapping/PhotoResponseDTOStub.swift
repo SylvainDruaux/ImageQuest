@@ -17,7 +17,7 @@ extension PhotoResponseDTO {
         description: String = "Just a beautiful landscape",
         altDescription: String? = nil,
         urls: ImageQuest.Urls = .init(raw: "", full: "", regular: "", small: "", thumb: "", smallS3: ""),
-        links: Links = .init(download: ""),
+        links: Links = .init(html: "", download: ""),
         user: User = .init(id: UUID().uuidString, name: "Alex Smith"),
         exif: Exif? = nil,
         location: Location? = nil
@@ -44,13 +44,8 @@ extension PhotoResponseDTO {
     static var secondPhoto: Self {
         .stub(
             description: "Second photo",
-            exif: .init(make: "Canon", model: "Canon EOS 6D", exposureTime: "1/800", aperture: 3.2, focalLength: 24.0, iso: 100),
-            location: .init(
-                name: "Rio de Janeiro, Brazil",
-                city: "Rio de Janeiro",
-                country: "Brazil",
-                position: .init(latitude: -22.9068, longitude: -43.1729)
-            )
+            exif: .init(make: "Canon", model: "Canon EOS 6D", exposureTime: "1/800", aperture: "3.2", focalLength: "24.0", iso: 100),
+            location: .init(name: "Rio de Janeiro, Brazil", position: .init(latitude: -22.9068, longitude: -43.1729))
         )
     }
     
