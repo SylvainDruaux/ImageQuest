@@ -50,6 +50,7 @@ struct DiscoverPhotosView: View {
             }
         }
         .task { await viewModel.loadLatestPhotos() }
+        .refreshable { await viewModel.loadLatestPhotos() }
         .searchable(
             text: $viewModel.searchText,
             placement: .navigationBarDrawer(displayMode: .always)
