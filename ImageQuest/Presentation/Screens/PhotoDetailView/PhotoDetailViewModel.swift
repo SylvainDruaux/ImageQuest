@@ -26,7 +26,9 @@ final class PhotoDetailViewModel: ObservableObject {
         do {
             detailedPhoto = try await detailedPhotoUseCase.execute(id: photoID)
             
-            if let position = detailedPhoto?.location?.position, let latitude = position.latitude, let longitude = position.longitude {
+            if let position = detailedPhoto?.location?.position,
+               let latitude = position.latitude, !latitude.isZero,
+               let longitude = position.longitude, !longitude.isZero {
                 cameraPosition = .region(.init(
                     center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude),
                     latitudinalMeters: 1100, longitudinalMeters: 1100
