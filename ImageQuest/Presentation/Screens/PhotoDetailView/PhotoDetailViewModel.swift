@@ -12,8 +12,7 @@ import _MapKit_SwiftUI
 final class PhotoDetailViewModel: ObservableObject {
     @Published private(set) var detailedPhoto: Photo?
     @Published private(set) var cameraPosition: MapCameraPosition?
-    @Published private(set) var error: String?
-    @Published var hasError = false
+    @Published var error: NetworkError?
     @Published var isShowingPhotoInfoSheet = false
     
     private let detailedPhotoUseCase: DetailedPhotoUseCaseProtocol
@@ -36,8 +35,7 @@ final class PhotoDetailViewModel: ObservableObject {
                 ))
             }
         } catch {
-            self.error = (error as? NetworkError)?.errorDescription ?? error.localizedDescription
-            hasError = true
+            self.error = error as? NetworkError
         }
     }
 }

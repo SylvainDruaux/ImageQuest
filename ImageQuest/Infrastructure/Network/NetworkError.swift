@@ -36,39 +36,3 @@ enum NetworkError: Error {
     /// Unknown error.
     case unknown
 }
-
-extension NetworkError: LocalizedError {
-    var errorDescription: String? {
-        switch self {
-        case .network(let error):
-            if error.isOtherConnectionError {
-                return "Check your network or switch to a faster connection, then try again."
-            }
-            return error.localizedDescription
-            
-        case .badRequest:
-            return "The request was unacceptable, often due to missing a required parameter"
-            
-        case .unauthorised:
-            return "Invalid Access Token"
-                        
-        case .forbidden:
-            return "Missing permissions to perform request"
-            
-        case .notFound:
-            return "The requested resource doesn’t exist"
-            
-        case .tooManyRequests:
-            return "Too many requests"
-            
-        case .internalServerError, .notImplemented, .badGateway, .serviceUnavailable, .gatewayTimeout:
-            return "Something went wrong on our end"
-            
-        case .decode(let error):
-            return error.localizedDescription
-            
-        case .unknown:
-            return "Unknown error"
-        }
-    }
-}

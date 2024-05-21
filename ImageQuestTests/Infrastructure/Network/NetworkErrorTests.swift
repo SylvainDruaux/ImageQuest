@@ -17,7 +17,7 @@ class NetworkErrorTests: XCTestCase {
         switch networkError {
         case .network(let error):
             XCTAssertTrue(error.isOtherConnectionError)
-            XCTAssertNotNil(networkError.errorDescription)
+            XCTAssertNotNil(networkError.localizedDescription)
             
         default:
             XCTFail("Error does not match")
@@ -33,7 +33,7 @@ class NetworkErrorTests: XCTestCase {
         switch networkError {
         case .badRequest(let message):
             XCTAssertEqual(message, expectedMessage)
-            XCTAssertNotNil(networkError.errorDescription)
+            XCTAssertNotNil(networkError.localizedDescription)
             
         default:
             XCTFail("Error does not match")
@@ -49,7 +49,7 @@ class NetworkErrorTests: XCTestCase {
         switch networkError {
         case .unauthorised(let message):
             XCTAssertEqual(message, expectedMessage)
-            XCTAssertNotNil(networkError.errorDescription)
+            XCTAssertNotNil(networkError.localizedDescription)
             
         default:
             XCTFail("Error does not match")
@@ -65,7 +65,7 @@ class NetworkErrorTests: XCTestCase {
         switch networkError {
         case .forbidden(let message):
             XCTAssertEqual(message, expectedMessage)
-            XCTAssertNotNil(networkError.errorDescription)
+            XCTAssertNotNil(networkError.localizedDescription)
             
         default:
             XCTFail("Error does not match")
@@ -81,7 +81,7 @@ class NetworkErrorTests: XCTestCase {
         switch networkError {
         case .notFound(let message):
             XCTAssertEqual(message, expectedMessage)
-            XCTAssertNotNil(networkError.errorDescription)
+            XCTAssertNotNil(networkError.localizedDescription)
             
         default:
             XCTFail("Error does not match")
@@ -97,7 +97,7 @@ class NetworkErrorTests: XCTestCase {
         switch networkError {
         case .tooManyRequests(let message):
             XCTAssertEqual(message, expectedMessage)
-            XCTAssertNotNil(networkError.errorDescription)
+            XCTAssertNotNil(networkError.localizedDescription)
             
         default:
             XCTFail("Error does not match")
@@ -113,7 +113,7 @@ class NetworkErrorTests: XCTestCase {
         switch networkError {
         case .internalServerError(let message):
             XCTAssertEqual(message, expectedMessage)
-            XCTAssertNotNil(networkError.errorDescription)
+            XCTAssertNotNil(networkError.localizedDescription)
             
         default:
             XCTFail("Error does not match")
@@ -129,7 +129,7 @@ class NetworkErrorTests: XCTestCase {
         switch networkError {
         case .notImplemented(let message):
             XCTAssertEqual(message, expectedMessage)
-            XCTAssertNotNil(networkError.errorDescription)
+            XCTAssertNotNil(networkError.localizedDescription)
             
         default:
             XCTFail("Error does not match")
@@ -145,7 +145,7 @@ class NetworkErrorTests: XCTestCase {
         switch networkError {
         case .badGateway(let message):
             XCTAssertEqual(message, expectedMessage)
-            XCTAssertNotNil(networkError.errorDescription)
+            XCTAssertNotNil(networkError.localizedDescription)
             
         default:
             XCTFail("Error does not match")
@@ -161,7 +161,7 @@ class NetworkErrorTests: XCTestCase {
         switch networkError {
         case .serviceUnavailable(let message):
             XCTAssertEqual(message, expectedMessage)
-            XCTAssertNotNil(networkError.errorDescription)
+            XCTAssertNotNil(networkError.localizedDescription)
             
         default:
             XCTFail("Error does not match")
@@ -177,7 +177,7 @@ class NetworkErrorTests: XCTestCase {
         switch networkError {
         case .gatewayTimeout(let message):
             XCTAssertEqual(message, expectedMessage)
-            XCTAssertNotNil(networkError.errorDescription)
+            XCTAssertNotNil(networkError.localizedDescription)
             
         default:
             XCTFail("Error does not match")
@@ -191,7 +191,7 @@ class NetworkErrorTests: XCTestCase {
         
         switch networkError {
         case .decode:
-            XCTAssertNotNil(networkError.errorDescription)
+            XCTAssertNotNil(networkError.localizedDescription)
             
         default:
             XCTFail("Error does not match")
@@ -206,7 +206,7 @@ class NetworkErrorTests: XCTestCase {
         switch networkError {
         case .unknown:
             XCTAssertTrue(true)
-            XCTAssertNotNil(networkError.errorDescription)
+            XCTAssertNotNil(networkError.localizedDescription)
             
         default:
             XCTFail("Error does not match")
