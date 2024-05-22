@@ -28,7 +28,9 @@ extension EndpointProtocol {
         let baseUrl = baseURL.hasSuffix("/") ? baseURL : baseURL.appending("/")
         let endpoint = baseUrl.appending(path)
         
-        var urlComponents = URLComponents(string: endpoint)!
+        guard var urlComponents = URLComponents(string: endpoint) else {
+            fatalError("Invalid URL")
+        }
         
         var urlQueryItems = [URLQueryItem]()
         for queryParameter in queryParameters {
@@ -36,9 +38,13 @@ extension EndpointProtocol {
         }
         urlComponents.queryItems = urlQueryItems.isEmpty ? nil : urlQueryItems
         
-        return urlComponents.url!
+        guard let url = urlComponents.url else {
+            fatalError("Invalid URL components")
+        }
+        
+        return url
     }
-
+    
     func urlRequest() async throws -> URLRequest {
         let url = url()
         var urlRequest = URLRequest(url: url)

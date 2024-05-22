@@ -14,8 +14,7 @@ final class DiscoverPhotosViewModel: ObservableObject {
     @Published private(set) var photos: [Photo] = []
     @Published private(set) var latestPhotosLayout = ColumnLayout<Photo>(properties: FixedColumnLayoutProperties.twoColumns)
     @Published private(set) var photosLayout = ColumnLayout<Photo>(properties: FixedColumnLayoutProperties.twoColumns)
-    @Published private(set) var error: String?
-    @Published var hasError = false
+    @Published var error: NetworkError?
     
     private var photosTotalPages: Int = 1
     private var photosPageNumber: Int = 1
@@ -40,8 +39,7 @@ final class DiscoverPhotosViewModel: ObservableObject {
         do {
             latestPhotos = try await latestPhotosUseCase.execute(page: 1, perPage: 30)
         } catch {
-            self.error = (error as? NetworkError)?.errorDescription ?? error.localizedDescription
-            hasError = true
+            self.error = error as? NetworkError
         }
     }
     
@@ -54,8 +52,7 @@ final class DiscoverPhotosViewModel: ObservableObject {
             photos += photosPage.photos
             photosPageNumber += 1
         } catch {
-            self.error = (error as? NetworkError)?.errorDescription ?? error.localizedDescription
-            hasError = true
+            self.error = error as? NetworkError
         }
     }
 }

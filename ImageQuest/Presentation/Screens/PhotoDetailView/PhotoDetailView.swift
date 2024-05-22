@@ -57,15 +57,10 @@ struct PhotoDetailView: View {
         .toolbarBackground(.hidden, for: .navigationBar)
         .task { await viewModel.loadDetailedPhoto(photo.id) }
         .sheet(isPresented: $viewModel.isShowingPhotoInfoSheet) {
-            NavigationStack {
-                PhotoInfoSheet(photo: viewModel.detailedPhoto ?? photo, cameraPosition: viewModel.cameraPosition)
-                    .navigationBarItems(
-                        leading: Button("Close") { viewModel.isShowingPhotoInfoSheet = false }
-                    )
-            }
+            PhotoInfoSheet(photo: viewModel.detailedPhoto ?? photo, cameraPosition: viewModel.cameraPosition)
         }
-        .alert(viewModel.error ?? "", isPresented: $viewModel.hasError) {
-            Button("OK", role: .cancel) {}
+        .errorAlert(alert: $viewModel.error) {
+            Task { await viewModel.loadDetailedPhoto(photo.id) }
         }
     }
 }

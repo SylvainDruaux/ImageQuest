@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/unsplash/swiftui-lazycollectionview.git",
       "state" : {
-        "revision" : "e3b9f5c261ca2669269ba2107d3ecdba5146d7e0",
-        "version" : "1.1.0"
+        "revision" : "c705ce063a5d7478b6b5ac282be6daa6f419eb1c",
+        "version" : "1.2.0"
       }
     }
   ],

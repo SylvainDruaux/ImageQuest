@@ -5,8 +5,6 @@
 //  Created by Sylvain Druaux on 07/04/2024.
 //
 
-/// Big thanks to Olivier Collet for this awesome open-source photo layout
-
 import SwiftUI
 
 protocol ColumnLayoutProperties {

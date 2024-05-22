@@ -66,8 +66,8 @@ struct DiscoverPhotosView: View {
         .overlay {
             if !viewModel.searchText.isEmpty { PhotosSearchResult(viewModel: viewModel) }
         }
-        .alert(viewModel.error ?? "", isPresented: $viewModel.hasError) {
-            Button("OK", role: .cancel) {}
+        .errorAlert(alert: $viewModel.error) {
+            Task { await viewModel.loadLatestPhotos() }
         }
     }
 }

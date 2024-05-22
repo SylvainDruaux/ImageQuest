@@ -5,8 +5,6 @@
 //  Created by Sylvain Druaux on 07/04/2024.
 //
 
-/// Big thanks to Olivier Collet for this awesome open-source photo layout
-
 import SwiftUI
 import LazyCollectionView
 
@@ -189,5 +187,4 @@ class ColumnLayout<Item>: ObservableObject, LazyCollectionLayout where Item: Col
         let height = size.height * columnWidth / size.width
         return CGSize(width: floor(columnWidth), height: floor(height))
     }
-
 }

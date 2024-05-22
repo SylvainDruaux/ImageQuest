@@ -69,7 +69,7 @@ class DiscoverPhotosViewModelTests: XCTestCase {
         await sut.loadLatestPhotos()
         
         // THEN
-        XCTAssertEqual(sut.error, expectedError.errorDescription)
+        XCTAssertEqual(sut.error?.localizedDescription, expectedError.localizedDescription)
     }
     
     @MainActor func testLoadPhotosNamedSuccess() async {
@@ -98,6 +98,6 @@ class DiscoverPhotosViewModelTests: XCTestCase {
         await sut.loadPhotosNamed(query: expectedQuery)
         
         // THEN
-        XCTAssertEqual(sut.error, expectedError.errorDescription)
+        XCTAssertEqual(sut.error?.localizedDescription, expectedError.localizedDescription)
     }
 }

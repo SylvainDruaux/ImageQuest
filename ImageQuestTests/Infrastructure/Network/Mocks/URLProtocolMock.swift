@@ -11,14 +11,12 @@ final class URLProtocolMock: URLProtocol {
     static var data: Data?
     static var failError: Error?
     static var responseStatusCode: Int = 200
-    private(set) static var lastRequest: URLRequest?
     
     override class func canInit(with _: URLRequest) -> Bool {
         true
     }
     
     override class func canonicalRequest(for request: URLRequest) -> URLRequest {
-        lastRequest = request
         return request
     }
     
@@ -52,6 +50,5 @@ final class URLProtocolMock: URLProtocol {
         data = nil
         failError = nil
         responseStatusCode = 200
-        lastRequest = nil
     }
 }

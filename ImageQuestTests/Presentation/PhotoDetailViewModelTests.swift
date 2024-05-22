@@ -43,6 +43,6 @@ class PhotoDetailViewModelTests: XCTestCase {
         await sut.loadDetailedPhoto(expectedDetailedPhoto.id)
         
         // THEN
-        XCTAssertEqual(sut.error, expectedError.errorDescription)
+        XCTAssertEqual(sut.error?.localizedDescription, expectedError.localizedDescription)
     }
 }

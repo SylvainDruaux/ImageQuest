@@ -9,11 +9,23 @@ import SwiftUI
 import MapKit
 
 struct PhotoInfoSheet: View {
+    @Environment(\.dismiss) private var dismiss
     let photo: Photo
     let cameraPosition: MapCameraPosition?
     
     var body: some View {
         VStack(alignment: .leading) {
+            HStack {
+                Text("Info")
+                    .font(.headline)
+            }
+            .frame(maxWidth: .infinity)
+            .overlay(alignment: .leading) {
+                Button("Close") { dismiss() }
+            }
+            .padding(.top)
+            .padding(.bottom, 48)
+            
             if let description = photo.description {
                 Text(description)
                     .lineLimit(4)
@@ -22,17 +34,17 @@ struct PhotoInfoSheet: View {
             }
             
             if let cameraPosition,
-                let position = photo.location?.position,
-                let latitude = position.latitude,
-                let longitude = position.longitude {
-                    Map(initialPosition: cameraPosition) {
-                        Marker("", coordinate: CLLocationCoordinate2D(
-                            latitude: latitude,
-                            longitude: longitude
-                        ))
-                    }
-                    .frame(height: 150)
-                    .padding(.bottom)
+               let position = photo.location?.position,
+               let latitude = position.latitude,
+               let longitude = position.longitude {
+                Map(initialPosition: cameraPosition) {
+                    Marker("", coordinate: CLLocationCoordinate2D(
+                        latitude: latitude,
+                        longitude: longitude
+                    ))
+                }
+                .frame(height: 150)
+                .padding(.bottom)
             }
             
             if let locationName = photo.location?.name {
@@ -52,15 +64,11 @@ struct PhotoInfoSheet: View {
             
             Spacer()
         }
-        .navigationTitle("Info")
-        .navigationBarTitleDisplayMode(.inline)
-        .padding(.top, 32)
         .padding(.horizontal)
     }
 }
 
-#if DEBUG
-struct PhotoInfoSheetContainer: View {
+#Preview {
     let cameraPosition = MapCameraPosition.region(.init(
         center: CLLocationCoordinate2D(
             latitude: Photo.firstPhoto.location?.position?.latitude ?? 0.0,
@@ -69,15 +77,6 @@ struct PhotoInfoSheetContainer: View {
         latitudinalMeters: 1100, longitudinalMeters: 1100
     ))
     
-    var body: some View {
-        PhotoInfoSheet(photo: .firstPhoto, cameraPosition: cameraPosition)
-    }
-}
-#endif
-
-#Preview {
-    NavigationStack {
-        PhotoInfoSheetContainer()
-    }
-    .preferredColorScheme(.dark)
+    return PhotoInfoSheet(photo: .firstPhoto, cameraPosition: cameraPosition)
+        .preferredColorScheme(.dark)
 }
