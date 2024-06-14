@@ -6,13 +6,13 @@ ImageQuest  is an iOS application that leverages the powerful Unsplash API. It p
 ## Overview
 
 <p align="center">
-<img src="doc/screenshot-01.jpeg" width="200px">
-<img src="doc/screenshot-02.jpeg" width="200px">
-<img src="doc/screenshot-03.jpeg" width="200px">
+<img src="doc/screenshot-01.png" width="200px">
+<img src="doc/screenshot-02.png" width="200px">
+<img src="doc/screenshot-03.png" width="200px">
 <br />
-<img src="doc/screenshot-04.jpeg" width="200px">
-<img src="doc/screenshot-05.jpeg" width="200px">
-<img src="doc/screenshot-06.jpeg" width="200px">
+<img src="doc/screenshot-04.png" width="200px">
+<img src="doc/screenshot-05.png" width="200px">
+<img src="doc/screenshot-06.png" width="200px">
 </p>
 
 <br/>
