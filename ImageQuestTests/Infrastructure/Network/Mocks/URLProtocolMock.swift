@@ -12,10 +12,12 @@ final class URLProtocolMock: URLProtocol {
     static var failError: Error?
     static var responseStatusCode: Int = 200
     
+    // swiftlint:disable:next static_over_final_class
     override class func canInit(with _: URLRequest) -> Bool {
         true
     }
     
+    // swiftlint:disable:next static_over_final_class
     override class func canonicalRequest(for request: URLRequest) -> URLRequest {
         return request
     }
