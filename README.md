@@ -1,6 +1,6 @@
 #  ImageQuest
 
-ImageQuest  is an iOS application that leverages the powerful Unsplash API. It provides features such as browsing, searching for photos and their details, and sharing them, all while guaranteeing a pleasant user experience with its Unsplash-inspired UX/UI.
+ImageQuest is an iOS application that leverages the powerful Unsplash API. It provides features such as browsing, searching for photos and their details, and sharing them, all while guaranteeing a pleasant user experience with its Unsplash-inspired UX/UI.
 
 
 ## Overview
@@ -61,13 +61,16 @@ ImageQuest  is an iOS application that leverages the powerful Unsplash API. It p
 This application uses [SPM](https://developer.apple.com/documentation/xcode/adding-package-dependencies-to-your-app) to manage dependencies.
 
 ## Prerequisites
+
 1. Visit [Unsplash](https://unsplash.com), sign up then sign in.
 2. Visit [Unsplash Application Registration Platform](https://unsplash.com/oauth/applications/new) agree with terms and create a new application.
 3. After creating the application, you will be redirected to its details page. In the `Redirect URI & Permissions - Redirect URI` section, you can leave the default option, `Public access`, checked.
 
 ## Installation
+
 1. Open the project and create a new file named `Config.json`. 
 2. Input your "Access Key" in the following format:
+
 ``` json
 {
   "client_id": "YOUR_ACCESS_KEY"
@@ -75,11 +78,13 @@ This application uses [SPM](https://developer.apple.com/documentation/xcode/addi
 ```
 
 ## Dependencies
+
 This application uses the following packages (SPM):
 * [SwiftUI CachedAsyncImage](https://github.com/lorenzofiamingo/swiftui-cached-async-image)
 * [LazyCollectionView](https://github.com/unsplash/swiftui-lazycollectionview)
 
 ## Architecture
+
 This project relies on Clean Architecture combined with MVVM-C (Model-View-ViewModel-Coordinator) design pattern.
 
 <p align="center">
@@ -87,6 +92,7 @@ This project relies on Clean Architecture combined with MVVM-C (Model-View-ViewM
 </p>
 
 The structure of this project.
+
 ```
 ImageQuest
 ├── Presentation # Views and View Models
@@ -107,6 +113,3 @@ ImageQuest
 └── Infrastructure
     └── Network
 ```
-
-## Contact
-For any queries or suggestions, feel free to contact me at [contact@sylvaindruaux.com](mailto:contact@sylvaindruaux.com).
